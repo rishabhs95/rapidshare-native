@@ -1,0 +1,21 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<%= link_to 'Logout', 'logout' %>
+
+<h1>Files</h1>
+<table cellspacing='10'>
+  <% @files.each do |file| %>
+    <tr>
+      <td> <%= file.file_name %> </td>
+      <td> <%= link_to 'Edit', "upload/#{file.uuid}/edit" %> </td>
+      <td> <%= link_to 'Delete', "upload/#{file.uuid}", :method => 'delete' %> </td>
+      <td> <%= link_to 'Download', "upload/#{file.uuid}" %> </td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'Upload', 'upload/new' %>

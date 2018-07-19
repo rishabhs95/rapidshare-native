@@ -1,3 +1,7 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
 <h1>Signup!</h1>
 <%= form_for :user, url: '/users' do |f| %>
   Username: <%= f.text_field :username %>

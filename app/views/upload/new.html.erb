@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<h1>Upload File</h1>
+<%= form_tag({action: :create}, :multipart => true) do %>
+    <%= file_field_tag 'upload[file]' %>
+    Filename: <%= text_field_tag :custom_file_name %>
+    <%= submit_tag "Upload" %>
+<% end %>
