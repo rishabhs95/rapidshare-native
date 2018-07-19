@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  get '/download' => 'upload#_show'
+
   resources :upload
 end

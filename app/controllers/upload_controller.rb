@@ -1,5 +1,5 @@
 class UploadController < ApplicationController
-  before_action :authorize
+  before_action :authorize, :only => [:index, :new, :create, :edit, :update, :destroy]
 
   # GET list of all entities
   def index
@@ -24,12 +24,25 @@ class UploadController < ApplicationController
   def show
     uuid = params[:id]
     file = Upload.by_user(current_user).with_hash(uuid).first
-    send_file file.path, :disposition => 'attachment' unless file.nil?
+    details = file.path.split('.')
+    extension = details[1]
+    file_name = "#{file.file_name}.#{extension}"
+    send_file file.path, filename: file_name, disposition: 'attachment' unless file.nil?
     # send_file(
     #   file.path,
     #   filename: file.file_name,
     #   type: file.file_type
     # ) unless file.nil?
+  end
+
+  # GET resource by id
+  def _show
+    uuid = params[:uuid]
+    file = Upload.with_hash(uuid).first
+    details = file.path.split('.')
+    extension = details[1]
+    file_name = "#{file.file_name}.#{extension}"
+    send_file file.path, filename: file_name, disposition: 'attachment' unless file.nil?
   end
 
   # GET HTML for PUT/PATCH to #update

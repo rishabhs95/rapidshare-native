@@ -2,13 +2,15 @@
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
 
-<%= link_to 'Logout', 'logout' %>
+<%= link_to 'Home', '/' %>
+<%= link_to 'Logout', '/logout' %>
 
 <h1>Files</h1>
 <table cellspacing='10'>
   <% @files.each do |file| %>
     <tr>
-      <td> <%= file.file_name %> </td>
+      <td> Name: <%= file.file_name %> </td>
+      <td> UUID: <%= file.uuid %> </td>
       <td> <%= link_to 'Edit', "upload/#{file.uuid}/edit" %> </td>
       <td> <%= link_to 'Delete', "upload/#{file.uuid}", :method => 'delete' %> </td>
       <td> <%= link_to 'Download', "upload/#{file.uuid}" %> </td>
@@ -19,3 +21,16 @@
 <br/>
 
 <%= link_to 'Upload', 'upload/new' %>
+
+<br/>
+<br/>
+
+<h1>Download file by UUID</h1>
+<%= form_tag({action: :_show}, method: :get) do %>
+  <p>
+    UUID: <%= text_field_tag :uuid %>
+  </p>
+  <p>
+    <%= submit_tag "Download" %>
+  </p>
+<% end %>
