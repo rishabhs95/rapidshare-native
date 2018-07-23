@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'upload#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-  get '/users/update/:user_id' => 'users#show'
-  patch 'users/update/:user_id' => 'users#update'
+  get '/user' => 'users#show'
+  get '/user/edit' => 'users#edit'
+  patch '/user/update' => 'users#update'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

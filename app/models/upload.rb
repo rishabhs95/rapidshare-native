@@ -1,9 +1,10 @@
 class Upload < ApplicationRecord
   belongs_to :user
 
+  validates_presence_of :user_id, :path, :uuid
+
   scope :by_user, -> (user) { where user_id: user.id }
   scope :with_hash, -> (uuid) { where uuid: uuid }
-  scope :with_name, -> (filename) { where file_name: filename }
 
   def self.save_file(file, name, user_id)
     file_details = file.original_filename.split('.')

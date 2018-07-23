@@ -1,5 +1,5 @@
 class UploadController < ApplicationController
-  before_action :authorize, :only => [:index, :new, :create, :edit, :update, :destroy]
+  before_action :authorize, :only => [:index, :new, :create, :show, :edit, :update, :destroy]
 
   # GET list of all entities
   def index
@@ -49,7 +49,7 @@ class UploadController < ApplicationController
   def edit
   end
 
-  # PUT/PATCH resource by id
+  # PATCH resource by id
   def update
     uuid = params[:id]
     new_name = params[:file_name]

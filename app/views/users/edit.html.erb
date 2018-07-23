@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<h1>Update User Details</h1>
+<%= form_tag({action: :update}, method: :patch) do %>
+  <p> Name: <%= text_field_tag :name %> </p>
+  <p> Phone: <%= text_field_tag :phone %> </p>
+  <%= submit_tag "Update" %>
+<% end %>

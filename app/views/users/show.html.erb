@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<h1>Profile</h1>
+<p> Username: <%= current_user.username %> </p>
+<p> Name: <%= current_user.name %> </p>
+<p> Email: <%= current_user.email %> </p>
+<p> Phone: <%= current_user.phone %> </p>
+<%= link_to 'Update', 'user/edit' %>

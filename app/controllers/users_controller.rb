@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authorize, :only => [:show, :edit, :update]
+
   def new
   end
 
@@ -13,6 +15,24 @@ class UsersController < ApplicationController
       flash[:notice] = 'Error in signing up'
     end
   end
+
+  # GET resource by id
+  def show
+  end
+
+  # GET HTML for PUT/PATCH to #update
+  def edit
+  end
+
+  # PATCH resource by id
+  def update
+    new_name = params[:name]
+    new_phone = params[:phone]
+    User.where(id: current_user.id).update_all(name: new_name, phone: new_phone)
+    flash[:notice] = "User details updated."
+    redirect_to user_path
+  end
+
 
   private
   def user_params

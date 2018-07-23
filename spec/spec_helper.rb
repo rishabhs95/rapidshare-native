@@ -94,3 +94,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def sign_in
+  user = FactoryBot.create(:user)
+  session[:user_id] = user.id
+end
+
+def upload_file
+  file_upload = FactoryBot.create(:upload)
+end
