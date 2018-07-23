@@ -2,6 +2,9 @@
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
 
+<%= link_to 'Home', '/' %>
+<%= link_to 'Logout', '/logout' %>
+
 <h1>Profile</h1>
 <p> Username: <%= current_user.username %> </p>
 <p> Name: <%= current_user.name %> </p>
